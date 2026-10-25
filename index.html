@@ -5,84 +5,94 @@
 <title>Voidforged - Pre-Forge</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-<style>body{font-family:'Space Grotesk',sans-serif;background:#050508}.mono{font-family:'JetBrains Mono',monospace}button{pointer-events:auto!important;position:relative;z-index:20}</style>
+<style>body{font-family:'Space Grotesk',sans-serif;background:#050508}.mono{font-family:'JetBrains Mono',monospace}</style>
 </head>
 <body class="text-white min-h-screen bg-[#08080a]">
-<div class="bg-[#8b5cf6] text-center py-2 text-[11px] font-bold tracking-widest mono">⚒️ PRE-FORGE PHASE • MINT NOT LIVE • ROBINHOOD CHAIN 4663</div>
+<div class="bg-[#8b5cf6] text-center py-2 text-[11px] font-bold tracking-widest mono">⚒️ PRE-FORGE • FOLLOW TO JOIN WL • ROBINHOOD CHAIN 4663</div>
 <nav class="border-b border-zinc-800/60 bg-black/80 backdrop-blur sticky top-0 z-50">
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 <div class="flex items-center gap-3"><img src="./void.png" class="w-8 h-8 rounded-lg"><span class="font-bold tracking-[0.2em] text-sm">VOIDFORGED</span></div>
-<button onclick="connectWallet()" id="connectTop" class="bg-white text-black px-5 py-2 rounded-full text-xs font-bold mono cursor-pointer">CONNECT WALLET</button>
+<button onclick="connectWallet()" id="connectTop" class="bg-white text-black px-5 py-2 rounded-full text-xs font-bold mono">CONNECT WALLET</button>
 </div>
 </nav>
-<div class="max-w-7xl mx-auto px-6 py-10 grid lg:grid-cols-2 gap-10 items-center">
+
+<div class="max-w-7xl mx-auto px-6 py-10 grid lg:grid-cols-2 gap-10">
 <div>
-<div class="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/20 px-3 py-1 rounded-full text-[10px] text-yellow-400 mono mb-4">● MINT PENDING • WHITELIST OPEN</div>
 <h1 class="text-6xl font-bold leading-[0.9]">VOID<br><span class="text-zinc-500">FORGED</span></h1>
-<p class="text-lg text-zinc-400 mt-4">Forged in the Void, Tempered by Chaos.</p>
-<p class="italic border-l-2 border-purple-600 pl-4 text-zinc-300 mt-4 text-sm">The anvil cracks, the helmet fractures, but the forge never dies.</p>
-<div class="flex gap-3 mt-6">
-<button onclick="openWL()" id="joinBtn" class="bg-white text-black px-8 py-3 rounded-xl font-bold text-sm cursor-pointer">JOIN FORGE LIST →</button>
-<button onclick="openPools()" id="viewPoolsBtn" class="border border-zinc-700 px-8 py-3 rounded-xl text-sm bg-zinc-900 cursor-pointer">VIEW POOLS (LOCKED)</button>
+<p class="text-zinc-400 mt-4">Forged in the Void, Tempered by Chaos.</p>
+<button onclick="openWL()" class="mt-6 bg-white text-black px-8 py-3 rounded-xl font-bold text-sm">JOIN FORGE LIST →</button>
+<p class="text-[10px] text-zinc-600 mt-2 mono">Requires: Follow Twitter + Connect Wallet</p>
 </div>
+<div class="relative bg-black border border-zinc-800 rounded-[1.5rem] p-2"><img src="./void.png" class="w-full rounded-[1.2rem]"><div class="absolute inset-2 bg-black/40 rounded-[1.2rem] flex items-center justify-center"><div class="bg-black border border-zinc-700 px-4 py-2 rounded-full text-xs mono">🔒 MINT NOT LIVE</div></div></div>
 </div>
-<div class="relative">
-<div class="relative bg-black border border-zinc-800 rounded-[1.5rem] p-2">
-<img src="./void.png" class="w-full rounded-[1.2rem]">
-<div class="absolute inset-2 rounded-[1.2rem] bg-black/40 flex items-center justify-center pointer-events-none"><div class="bg-black border border-zinc-700 px-4 py-2 rounded-full text-xs mono">🔒 FORGE LOCKED</div></div>
+
+<!-- WL MODAL WITH TWITTER TASKS -->
+<div id="wlModal" class="fixed inset-0 bg-black/90 backdrop-blur z-[100] flex items-center justify-center p-4">
+<div class="bg-[#121212] border border-zinc-800 rounded-2xl max-w-md w-full p-6">
+<div class="flex justify-between items-center mb-6"><h2 class="font-bold text-lg">Join Forge List</h2><span class="text-[10px] bg-purple-600 px-2 py-1 rounded-full">3 TASKS</span></div>
+
+<div class="space-y-3" id="tasks">
+<!-- TASK 1 -->
+<div id="task1" class="bg-black border border-zinc-800 rounded-xl p-4 flex justify-between items-center">
+<div class="flex gap-3 items-center"><div class="w-8 h-8 bg-[#1DA1F2]/20 rounded-full flex items-center justify-center">𝕏</div><div><p class="text-sm font-bold">Follow @Voidforged</p><p class="text-[10px] text-zinc-500">Follow us on X/Twitter</p></div></div>
+<button onclick="doFollow()" id="btnFollow" class="bg-white text-black px-4 py-2 rounded-lg text-xs font-bold">FOLLOW</button>
 </div>
+<!-- TASK 2 -->
+<div id="task2" class="bg-black border border-zinc-800 rounded-xl p-4 flex justify-between items-center opacity-50">
+<div class="flex gap-3 items-center"><div class="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center">↻</div><div><p class="text-sm font-bold">Retweet Pinned</p><p class="text-[10px] text-zinc-500">RT our forge announcement</p></div></div>
+<button onclick="doRT()" id="btnRT" class="bg-zinc-800 px-4 py-2 rounded-lg text-xs font-bold">RETWEET</button>
 </div>
-</div>
-<div class="max-w-7xl mx-auto px-6 pb-12 grid lg:grid-cols-3 gap-6">
-<div class="bg-[#111] border border-zinc-800 rounded-2xl p-6">
-<p class="text-xs tracking-widest text-zinc-500 mb-4">FORGE LIST</p>
-<button onclick="connectWallet()" id="connectSide" class="w-full bg-white text-black py-3 rounded-xl font-bold text-sm cursor-pointer">Connect to Join WL</button>
-<div id="walletInfo" class="hidden mt-4 p-3 bg-black border border-zinc-800 rounded-xl"><p id="walletAddr" class="mono text-xs text-green-400 break-all"></p><p class="text-[10px] mt-2 text-yellow-400" id="wlStatus">Whitelisted!</p></div>
+<!-- TASK 3 -->
+<div id="task3" class="bg-black border border-zinc-800 rounded-xl p-4 flex justify-between items-center opacity-50">
+<div class="flex gap-3 items-center"><div class="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center">◫</div><div><p class="text-sm font-bold">Connect Wallet</p><p class="text-[10px] text-zinc-500">Robinhood Chain 4663</p></div></div>
+<button onclick="connectWallet()" id="btnWallet" class="bg-zinc-800 px-4 py-2 rounded-lg text-xs font-bold">CONNECT</button>
 </div>
 </div>
 
-<div id="poolsModal" onclick="if(event.target==this)closePools()" class="fixed inset-0 bg-black/80 backdrop-blur hidden z-[100] flex items-center justify-center p-6">
-<div class="bg-[#121212] border border-zinc-800 rounded-2xl max-w-lg w-full p-6">
-<div class="flex justify-between mb-4"><h2 class="font-bold">Pools - Coming Soon</h2><button onclick="closePools()" class="w-8 h-8 bg-zinc-800 rounded-full">✕</button></div>
-<p class="text-xs text-zinc-500">Mint not live yet. Pools unlock after mint on Robinhood Chain 4663.</p>
+<div class="mt-6">
+<p id="wlAddr" class="mono text-[10px] p-2 bg-black border border-zinc-800 rounded-lg text-zinc-500">Complete all tasks to join</p>
+<button onclick="confirmWL()" id="confirmBtn" disabled class="w-full mt-3 bg-zinc-800 text-zinc-500 py-3 rounded-xl font-bold text-sm">COMPLETE ALL TASKS FIRST</button>
+<p id="wlDone" class="text-xs text-green-400 mt-3 hidden text-center">✓ Whitelisted! Welcome to the forge, 0x8b7b...</p>
 </div>
-</div>
-
-<div id="wlModal" onclick="if(event.target==this)closeWL()" class="fixed inset-0 bg-black/80 backdrop-blur hidden z-[100] flex items-center justify-center p-6">
-<div class="bg-[#121212] border border-zinc-800 rounded-2xl max-w-sm w-full p-6 text-center">
-<h3 class="font-bold">Join Forge List</h3>
-<p id="wlAddr" class="mono text-xs mt-3 p-2 bg-black border border-zinc-800 rounded break-all">Connect wallet first</p>
-<button onclick="confirmWL()" class="w-full mt-4 bg-white text-black py-3 rounded-xl font-bold text-sm">CONFIRM WL JOIN</button>
-<p id="wlDone" class="text-xs text-green-400 mt-3 hidden">✓ Added! Refresh page.</p>
-<button onclick="closeWL()" class="text-xs text-zinc-500 mt-3">Close</button>
+<button onclick="closeWL()" class="w-full text-xs text-zinc-600 mt-4">Close for now</button>
 </div>
 </div>
 
 <script>
-const ROBINHOOD={chainId:'0x1237',chainName:'Robinhood Chain',nativeCurrency:{name:'ETH',symbol:'ETH',decimals:18},rpcUrls:['https://rpc.mainnet.chain.robinhood.com'],blockExplorerUrls:['https://robinhoodchain.blockscout.com']};
-let currentAddr='';
-function openPools(){document.getElementById('poolsModal').classList.remove('hidden');}
-function closePools(){document.getElementById('poolsModal').classList.add('hidden');}
-function openWL(){document.getElementById('wlModal').classList.remove('hidden'); if(currentAddr) document.getElementById('wlAddr').innerText=currentAddr;}
-function closeWL(){document.getElementById('wlModal').classList.add('hidden');}
-function confirmWL(){document.getElementById('wlDone').classList.remove('hidden'); document.getElementById('wlStatus').innerText='✓ Whitelisted #'+Math.floor(Math.random()*5000); setTimeout(closeWL,1000);}
+const TWITTER_USERNAME = "voidforgedxyz";
+const TWITTER_URL = "https://x.com/voidforgedxyz";
+const TWEET_URL = "https://x.com/voidforgedxyz/status/2114210176500949056";
 
+let t1=false,t2=false,t3=false; let currentAddr='';
+function checkAll(){ if(t1&&t2&&t3){ document.getElementById('confirmBtn').disabled=false; document.getElementById('confirmBtn').className='w-full mt-3 bg-white text-black py-3 rounded-xl font-bold text-sm'; document.getElementById('confirmBtn').innerText='JOIN FORGE LIST ✓'; }}
+
+function doFollow(){ window.open(TWITTER_URL,'_blank'); document.getElementById('task1').classList.add('border-green-900/50'); document.getElementById('btnFollow').innerText='DONE ✓'; document.getElementById('btnFollow').className='bg-green-600 px-4 py-2 rounded-lg text-xs font-bold'; t1=true; document.getElementById('task2').classList.remove('opacity-50'); checkAll(); }
+function doRT(){ window.open(TWEET_URL,'_blank'); document.getElementById('btnRT').innerText='DONE ✓'; document.getElementById('btnRT').className='bg-green-600 px-4 py-2 rounded-lg text-xs font-bold'; t2=true; document.getElementById('task3').classList.remove('opacity-50'); checkAll(); }
+
+const ROBINHOOD={chainId:'0x1237',chainName:'Robinhood Chain',nativeCurrency:{name:'ETH',symbol:'ETH',decimals:18},rpcUrls:['https://rpc.mainnet.chain.robinhood.com'],blockExplorerUrls:['https://robinhoodchain.blockscout.com']};
 async function connectWallet(){
- console.log('connect clicked');
- const elTop=document.getElementById('connectTop'); const elSide=document.getElementById('connectSide');
  try{
-  if(!window.ethereum){ alert('Wallet tidak terdeteksi! Buka link ini di dalam MetaMask App: klik 3 titik di MetaMask -> Browser -> paste voidforged.vercel.app'); window.open('https://metamask.io/download/','_blank'); return; }
-  elTop.innerText='Connecting...'; elSide.innerText='Connecting...';
+  if(!window.ethereum){alert('Buka di MetaMask browser');return;}
   const acc=await window.ethereum.request({method:'eth_requestAccounts'});
-  try{ await window.ethereum.request({method:'wallet_switchEthereumChain',params:[{chainId:ROBINHOOD.chainId}]}); }catch(e){ if(e.code===4902){ await window.ethereum.request({method:'wallet_addEthereumChain',params:[ROBINHOOD]}); } }
+  try{await window.ethereum.request({method:'wallet_switchEthereumChain',params:[{chainId:ROBINHOOD.chainId}]})}catch(e){if(e.code===4902)await window.ethereum.request({method:'wallet_addEthereumChain',params:[ROBINHOOD]})}
   currentAddr=acc[0]; const short=currentAddr.slice(0,6)+'...'+currentAddr.slice(-4);
-  elTop.innerText=short; elSide.innerText='Joined ✓ '+short;
-  document.getElementById('walletAddr').innerText=currentAddr;
-  document.getElementById('walletInfo').classList.remove('hidden');
+  document.getElementById('connectTop').innerText=short;
+  document.getElementById('btnWallet').innerText='DONE ✓'; document.getElementById('btnWallet').className='bg-green-600 px-4 py-2 rounded-lg text-xs font-bold';
   document.getElementById('wlAddr').innerText=currentAddr;
- }catch(e){ console.error(e); alert('Gagal: '+e.message); elTop.innerText='CONNECT WALLET'; elSide.innerText='Connect to Join WL'; }
+  t3=true; checkAll();
+ }catch(e){alert(e.message)}
 }
-window.connectWallet=connectWallet; window.openPools=openPools; window.closePools=closePools; window.openWL=openWL; window.closeWL=closeWL; window.confirmWL=confirmWL;
+function openWL(){document.getElementById('wlModal').classList.remove('hidden');}
+function closeWL(){document.getElementById('wlModal').classList.add('hidden');}
+function confirmWL(){
+ if(!(t1&&t2&&t3)) return;
+ document.getElementById('wlDone').classList.remove('hidden');
+ document.getElementById('wlDone').innerText='✓ Whitelisted! '+currentAddr.slice(0,10)+'... Welcome to forge!';
+ document.getElementById('wlAddr').innerText='✓ FORGE LIST JOINED • '+currentAddr;
+ setTimeout(closeWL,2000);
+}
+// auto open WL modal first time
+setTimeout(openWL,800);
 </script>
 </body>
 </html>
