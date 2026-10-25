@@ -85,4 +85,89 @@
 
 <script>
 const ROBINHOOD={chainId:'0x1237',chainName:'Robinhood Chain',nativeCurrency:{name:'ETH',symbol:'ETH',decimals:18},rpcUrls:['https://rpc.mainnet.chain.robinhood.com'],blockExplorerUrls:['https://robinhoodchain.blockscout.com']};
-let currentPool='forge'; let currentPoolAPR='120.5%'; let connected=false; let staked
+let currentPool='forge'; let currentPoolAPR='120.5%'; let connected=false; let stakedCount=1250; let pending=83.27;
+const vaultData=[{id:'0421',staked:false},{id:'0893',staked:false},{id:'1102',staked:false},{id:'2048',staked:false}];
+
+function renderVault(){
+ const grid=document.getElementById('vaultGrid');
+ grid.innerHTML='';
+ vaultData.forEach(v=>{
+  const div=document.createElement('div');
+  div.className='bg-black border '+(v.staked?'border-green-900/50':'border-zinc-800')+' rounded-xl overflow-hidden '+(v.staked?'opacity-100':'');
+  div.innerHTML=`<img src="./void.png" class="aspect-square object-cover"><div class="p-3 flex justify-between items-center"><span class="text-xs mono">#${v.id}</span>${v.staked?'<span class="text-[10px] bg-green-600 px-2 py-1 rounded font-bold">STAKED</span>':'<button data-id="'+v.id+'" class="stakeCardBtn text-[10px] bg-white text-black px-2 py-1 rounded font-bold">STAKE</button>'}</div>`;
+  grid.appendChild(div);
+ });
+ document.querySelectorAll('.stakeCardBtn').forEach(b=>b.addEventListener('click',()=>openStake(b.dataset.id)));
+}
+renderVault();
+
+async function connectWallet(){
+ if(!window.ethereum){alert('Buka di MetaMask/Robinhood Wallet browser');return;}
+ try{
+  const acc=await window.ethereum.request({method:'eth_requestAccounts'});
+  try{await window.ethereum.request({method:'wallet_switchEthereumChain',params:[{chainId:ROBINHOOD.chainId}]})}catch(e){if(e.code===4902){await window.ethereum.request({method:'wallet_addEthereumChain',params:[ROBINHOOD]})}}
+  const short=acc[0].slice(0,6)+'...'+acc[0].slice(-4);
+  document.getElementById('connectTop').innerText=short;
+  document.getElementById('connectSide').innerText='Connected: '+short;
+  document.getElementById('walletAddr').innerText=acc[0];
+  document.getElementById('walletInfo').classList.remove('hidden');
+  document.getElementById('netStatus').innerText='Connected ✓'; document.getElementById('netStatus').className='text-green-400';
+  connected=true;
+ }catch(e){alert(e.message)}
+}
+
+function openStake(id){
+ if(!connected){connectWallet();return;}
+ document.getElementById('stakeTitle').innerText='Stake #'+id;
+ document.getElementById('stakePoolTxt').innerText='Pool: '+currentPool+' • '+currentPoolAPR+' APR';
+ document.getElementById('stakeModal').classList.remove('hidden');
+ document.getElementById('stakeModal').dataset.id=id;
+}
+function openPools(){document.getElementById('poolsModal').classList.remove('hidden');}
+function closePools(){document.getElementById('poolsModal').classList.add('hidden');}
+function closeStake(){document.getElementById('stakeModal').classList.add('hidden');document.getElementById('stakeStatus').classList.add('hidden');}
+
+document.getElementById('connectTop').addEventListener('click',connectWallet);
+document.getElementById('connectSide').addEventListener('click',connectWallet);
+document.getElementById('stakeNow').addEventListener('click',()=>{ if(vaultData.some(v=>!v.staked)){openStake(vaultData.find(v=>!v.staked).id)}else{alert('All staked!')} });
+document.getElementById('viewPoolsBtn').addEventListener('click',openPools);
+document.getElementById('closePools').addEventListener('click',closePools);
+document.getElementById('cancelStake').addEventListener('click',closeStake);
+document.getElementById('poolsModal').addEventListener('click',(e)=>{if(e.target.id==='poolsModal')closePools()});
+document.getElementById('stakeModal').addEventListener('click',(e)=>{if(e.target.id==='stakeModal')closeStake()});
+
+document.querySelectorAll('.poolSelect').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  currentPool=btn.dataset.pool;
+  currentPoolAPR=btn.parentElement.querySelector('p.text-xs').innerText.split('•')[0].trim();
+  document.querySelectorAll('.poolSelect').forEach(b=>{b.className='poolSelect bg-zinc-800 px-4 py-2 rounded-lg text-xs font-bold';b.innerText='SELECT'});
+  btn.className='poolSelect bg-white text-black px-4 py-2 rounded-lg text-xs font-bold';btn.innerText='ACTIVE ✓';
+  setTimeout(closePools,600);
+ });
+});
+
+document.getElementById('confirmStake').addEventListener('click',()=>{
+ const id=document.getElementById('stakeModal').dataset.id;
+ const item=vaultData.find(v=>v.id===id);
+ if(item){item.staked=true; stakedCount+=250; pending+=12.5;}
+ document.getElementById('stakedBal').innerText=stakedCount;
+ document.getElementById('pendingBal').innerText=pending.toFixed(2);
+ document.getElementById('claimTxt').innerText=pending.toFixed(2);
+ document.getElementById('stakeStatus').classList.remove('hidden');
+ renderVault();
+ setTimeout(closeStake,1200);
+});
+
+document.getElementById('claimBtn').addEventListener('click',()=>{
+ if(!connected){connectWallet();return;}
+ pending=0;
+ document.getElementById('pendingBal').innerText='0.00';
+ document.getElementById('claimTxt').innerText='0.00';
+ alert('Claimed '+document.getElementById('claimTxt').innerText+' VOID to 0x8b7b...4e56 ✓ (demo)');
+});
+
+// Auto increment pending for feel
+setInterval(()=>{if(connected&&pending>0){pending+=0.01;document.getElementById('pendingBal').innerText=pending.toFixed(2);document.getElementById('claimTxt').innerText=pending.toFixed(2);}},2000);
+</script>
+</body>
+</html>
