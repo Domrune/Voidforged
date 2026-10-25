@@ -2,172 +2,43 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voidforged - Robinhood Chain</title>
+<title>Voidforged - Pre-Forge | Robinhood Chain</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-<style>body{font-family:'Space Grotesk',sans-serif;background:#050508}.mono{font-family:'JetBrains Mono',monospace}.glow{box-shadow:0 0 30px rgba(139,92,246,0.5)}.modal{backdrop-filter:blur(12px)}</style>
+<style>body{font-family:'Space Grotesk',sans-serif;background:#050508}.mono{font-family:'JetBrains Mono',monospace}</style>
 </head>
-<body class="text-white min-h-screen bg-gradient-to-b from-[#0a0a12] to-black">
-<nav class="border-b border-purple-900/20 bg-black/50 backdrop-blur sticky top-0 z-50">
+<body class="text-white min-h-screen bg-[#08080a]">
+<!-- TOP BANNER -->
+<div class="bg-[#8b5cf6] text-center py-2 text-[11px] font-bold tracking-widest mono">⚒️ PRE-FORGE PHASE • MINT NOT LIVE • $VOID NOT LIVE • ROBINHOOD CHAIN 4663</div>
+
+<nav class="border-b border-zinc-800/60 bg-black/50 backdrop-blur sticky top-0 z-50">
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-<div class="flex items-center gap-3"><img src="./void.png" class="w-9 h-9 rounded-lg"><span class="font-bold tracking-[0.2em]">VOIDFORGED</span><span class="text-[9px] bg-purple-600 px-2 py-1 rounded-full ml-2">ROBINHOOD CHAIN</span></div>
+<div class="flex items-center gap-3"><img src="./void.png" class="w-8 h-8 rounded-lg"><span class="font-bold tracking-[0.2em] text-sm">VOIDFORGED</span><span class="text-[8px] border border-zinc-700 px-2 py-1 rounded-full ml-2 mono">PRE-FORGE</span></div>
 <button id="connectTop" class="bg-white text-black px-5 py-2 rounded-full text-xs font-bold mono">CONNECT WALLET</button>
 </div>
 </nav>
 
-<div class="max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-12 items-center">
+<div class="max-w-7xl mx-auto px-6 py-10 grid lg:grid-cols-2 gap-10 items-center">
 <div>
-<h1 class="text-6xl md:text-7xl font-bold leading-[0.9]"><span class="text-[#c4b5fd]">VOID</span>FORGED</h1>
-<p class="text-xl md:text-2xl text-zinc-400 mt-4">Forged in the Void, Tempered by Chaos.</p>
-<p class="text-zinc-300 mt-6 italic border-l-2 border-purple-600 pl-4">The anvil cracks, the helmet fractures, but the forge never dies.</p>
-<p class="text-sm text-zinc-500 mt-6 max-w-lg">5,555 helmets forged on Robinhood Chain (4663). Stake to earn $VOID.</p>
-<div class="flex gap-3 mt-8">
-<button id="stakeNow" class="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-3 rounded-xl font-bold glow">STAKE NOW →</button>
-<button id="viewPoolsBtn" class="border border-zinc-700 px-8 py-3 rounded-xl hover:bg-zinc-900">VIEW POOLS</button>
+<div class="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/20 px-3 py-1 rounded-full text-[10px] text-yellow-400 mono mb-4">● MINT PENDING • WHITELIST OPEN</div>
+<h1 class="text-6xl font-bold leading-[0.9]">VOID<br><span class="text-zinc-500">FORGED</span></h1>
+<p class="text-lg text-zinc-400 mt-4">Forged in the Void, Tempered by Chaos.</p>
+<p class="italic border-l-2 border-purple-600 pl-4 text-zinc-300 mt-4 text-sm">The anvil cracks, the helmet fractures, but the forge never dies.</p>
+<div class="mt-6 p-4 bg-[#111] border border-zinc-800 rounded-xl">
+<p class="text-[10px] tracking-widest text-zinc-500">MINT COUNTDOWN</p>
+<div class="flex gap-4 mt-2 mono" id="countdown"><div><p class="text-2xl font-bold" id="d">07</p><p class="text-[9px] text-zinc-500">DAYS</p></div><div><p class="text-2xl font-bold" id="h">12</p><p class="text-[9px] text-zinc-500">HRS</p></div><div><p class="text-2xl font-bold" id="m">44</p><p class="text-[9px] text-zinc-500">MIN</p></div><div><p class="text-2xl font-bold" id="s">09</p><p class="text-[9px] text-zinc-500">SEC</p></div></div>
 </div>
-<div class="grid grid-cols-3 gap-4 mt-12">
-<div class="bg-black/50 border border-zinc-800 rounded-xl p-4"><p class="text-2xl font-bold" id="stakersCount">24,582</p><p class="text-xs text-zinc-500">STAKERS</p></div>
-<div class="bg-black/50 border border-zinc-800 rounded-xl p-4"><p class="text-2xl font-bold" id="totalStaked">12.4M</p><p class="text-xs text-zinc-500">VOID STAKED</p></div>
-<div class="bg-black/50 border border-zinc-800 rounded-xl p-4"><p class="text-2xl font-bold text-purple-400">120.5%</p><p class="text-xs text-zinc-500">APR</p></div>
+<div class="flex gap-3 mt-6">
+<button id="joinBtn" class="bg-white text-black px-8 py-3 rounded-xl font-bold text-sm">JOIN FORGE LIST →</button>
+<button id="viewPoolsBtn" class="border border-zinc-700 px-8 py-3 rounded-xl text-sm bg-zinc-900/50">VIEW POOLS (LOCKED)</button>
 </div>
+<p class="text-[10px] text-zinc-600 mt-3 mono">5,555 helmets • Robinhood Chain 4663 • Mint price TBA</p>
 </div>
 
 <div class="relative">
-<div class="absolute -inset-10 bg-purple-600/20 blur-[80px] rounded-full"></div>
-<div class="relative bg-black border border-purple-900/50 rounded-[2rem] p-3">
-<img src="./void.png" class="w-full rounded-[1.5rem] bg-zinc-900">
-<div class="absolute top-6 right-6 bg-black/80 backdrop-blur px-3 py-1 rounded-full text-[10px] mono border border-zinc-700">NFT ID: #7783 • STATUS: ACTIVE</div>
-<div class="p-4 mt-2 bg-[#0f0f0f] rounded-xl border border-zinc-800">
-<p class="text-xs text-purple-400 tracking-widest">YOUR STAKE</p>
-<p class="mono text-sm mt-2">Staked: <span id="stakedBal">1,250</span> VOID</p>
-<p class="mono text-sm">Pending: <span id="pendingBal">83.27</span> VOID</p>
-<button id="claimBtn" class="mt-3 bg-purple-600 px-4 py-2 rounded-lg text-xs font-bold hover:bg-purple-500">CLAIM <span id="claimTxt">83.27</span> VOID</button>
-</div>
-</div>
-</div>
-</div>
-
-<div class="max-w-7xl mx-auto px-6 pb-12 grid lg:grid-cols-3 gap-6">
-<div class="lg:col-span-2 bg-[#111] border border-zinc-800 rounded-2xl p-6">
-<p class="text-xs tracking-widest text-zinc-500 mb-4">YOUR VAULT • Robinhood Chain 4663</p>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="vaultGrid"></div>
-</div>
-<div class="bg-[#111] border border-zinc-800 rounded-2xl p-6 h-fit">
-<button id="connectSide" class="w-full bg-white text-black py-3.5 rounded-xl font-bold text-sm">Connect Wallet to Stake</button>
-<div id="walletInfo" class="hidden mt-4 p-3 bg-black border border-zinc-800 rounded-xl"><p class="text-[10px] text-zinc-500">CONNECTED</p><p id="walletAddr" class="mono text-xs mt-1 text-green-400 break-all"></p></div>
-<div class="mt-6 space-y-2 text-xs mono"><div class="flex justify-between"><span class="text-zinc-500">Network</span><span>Robinhood Chain</span></div><div class="flex justify-between"><span class="text-zinc-500">Chain ID</span><span>4663</span></div><div class="flex justify-between"><span class="text-zinc-500">Status</span><span id="netStatus" class="text-zinc-500">Not connected</span></div></div>
-</div>
-</div>
-
-<!-- POOLS MODAL -->
-<div id="poolsModal" class="fixed inset-0 bg-black/80 modal hidden z-[100] flex items-center justify-center p-6">
-<div class="bg-[#121212] border border-zinc-800 rounded-2xl max-w-lg w-full p-6">
-<div class="flex justify-between items-center mb-6"><h2 class="text-xl font-bold">Staking Pools</h2><button id="closePools" class="w-8 h-8 bg-zinc-800 rounded-full">✕</button></div>
-<div class="space-y-3">
-<div class="bg-black border border-purple-900/50 rounded-xl p-4 flex justify-between items-center"><div><p class="font-bold">Void Forge Pool</p><p class="text-xs text-zinc-500">120.5% APR • Lock 30d</p></div><button class="poolSelect bg-white text-black px-4 py-2 rounded-lg text-xs font-bold" data-pool="forge">SELECT</button></div>
-<div class="bg-black border border-zinc-800 rounded-xl p-4 flex justify-between items-center"><div><p class="font-bold">Chaos Pool</p><p class="text-xs text-zinc-500">86% APR • Flexible</p></div><button class="poolSelect bg-zinc-800 px-4 py-2 rounded-lg text-xs font-bold" data-pool="chaos">SELECT</button></div>
-<div class="bg-black border border-zinc-800 rounded-xl p-4 flex justify-between items-center"><div><p class="font-bold">Genesis Anvil</p><p class="text-xs text-zinc-500">210% APR • Lock 90d</p></div><button class="poolSelect bg-zinc-800 px-4 py-2 rounded-lg text-xs font-bold" data-pool="genesis">SELECT</button></div>
-</div>
-<p class="text-[10px] text-zinc-600 mt-4 mono">All pools on Robinhood Chain 4663 • Rewards in $VOID</p>
-</div>
-</div>
-
-<!-- STAKE MODAL -->
-<div id="stakeModal" class="fixed inset-0 bg-black/80 modal hidden z-[100] flex items-center justify-center p-6">
-<div class="bg-[#121212] border border-zinc-800 rounded-2xl max-w-sm w-full p-6 text-center">
-<img id="stakeImg" src="./void.png" class="w-32 h-32 rounded-2xl mx-auto mb-4">
-<h3 class="font-bold" id="stakeTitle">Stake #0421</h3>
-<p class="text-xs text-zinc-500 mt-1 mono" id="stakePoolTxt">Pool: Void Forge • 120.5% APR</p>
-<div class="mt-6 flex gap-3"><button id="cancelStake" class="flex-1 border border-zinc-700 py-3 rounded-xl">Cancel</button><button id="confirmStake" class="flex-1 bg-purple-600 py-3 rounded-xl font-bold">CONFIRM STAKE</button></div>
-<p id="stakeStatus" class="text-xs text-green-400 mt-3 hidden mono">✓ Staked! Rewards started.</p>
-</div>
-</div>
-
-<script>
-const ROBINHOOD={chainId:'0x1237',chainName:'Robinhood Chain',nativeCurrency:{name:'ETH',symbol:'ETH',decimals:18},rpcUrls:['https://rpc.mainnet.chain.robinhood.com'],blockExplorerUrls:['https://robinhoodchain.blockscout.com']};
-let currentPool='forge'; let currentPoolAPR='120.5%'; let connected=false; let stakedCount=1250; let pending=83.27;
-const vaultData=[{id:'0421',staked:false},{id:'0893',staked:false},{id:'1102',staked:false},{id:'2048',staked:false}];
-
-function renderVault(){
- const grid=document.getElementById('vaultGrid');
- grid.innerHTML='';
- vaultData.forEach(v=>{
-  const div=document.createElement('div');
-  div.className='bg-black border '+(v.staked?'border-green-900/50':'border-zinc-800')+' rounded-xl overflow-hidden '+(v.staked?'opacity-100':'');
-  div.innerHTML=`<img src="./void.png" class="aspect-square object-cover"><div class="p-3 flex justify-between items-center"><span class="text-xs mono">#${v.id}</span>${v.staked?'<span class="text-[10px] bg-green-600 px-2 py-1 rounded font-bold">STAKED</span>':'<button data-id="'+v.id+'" class="stakeCardBtn text-[10px] bg-white text-black px-2 py-1 rounded font-bold">STAKE</button>'}</div>`;
-  grid.appendChild(div);
- });
- document.querySelectorAll('.stakeCardBtn').forEach(b=>b.addEventListener('click',()=>openStake(b.dataset.id)));
-}
-renderVault();
-
-async function connectWallet(){
- if(!window.ethereum){alert('Buka di MetaMask/Robinhood Wallet browser');return;}
- try{
-  const acc=await window.ethereum.request({method:'eth_requestAccounts'});
-  try{await window.ethereum.request({method:'wallet_switchEthereumChain',params:[{chainId:ROBINHOOD.chainId}]})}catch(e){if(e.code===4902){await window.ethereum.request({method:'wallet_addEthereumChain',params:[ROBINHOOD]})}}
-  const short=acc[0].slice(0,6)+'...'+acc[0].slice(-4);
-  document.getElementById('connectTop').innerText=short;
-  document.getElementById('connectSide').innerText='Connected: '+short;
-  document.getElementById('walletAddr').innerText=acc[0];
-  document.getElementById('walletInfo').classList.remove('hidden');
-  document.getElementById('netStatus').innerText='Connected ✓'; document.getElementById('netStatus').className='text-green-400';
-  connected=true;
- }catch(e){alert(e.message)}
-}
-
-function openStake(id){
- if(!connected){connectWallet();return;}
- document.getElementById('stakeTitle').innerText='Stake #'+id;
- document.getElementById('stakePoolTxt').innerText='Pool: '+currentPool+' • '+currentPoolAPR+' APR';
- document.getElementById('stakeModal').classList.remove('hidden');
- document.getElementById('stakeModal').dataset.id=id;
-}
-function openPools(){document.getElementById('poolsModal').classList.remove('hidden');}
-function closePools(){document.getElementById('poolsModal').classList.add('hidden');}
-function closeStake(){document.getElementById('stakeModal').classList.add('hidden');document.getElementById('stakeStatus').classList.add('hidden');}
-
-document.getElementById('connectTop').addEventListener('click',connectWallet);
-document.getElementById('connectSide').addEventListener('click',connectWallet);
-document.getElementById('stakeNow').addEventListener('click',()=>{ if(vaultData.some(v=>!v.staked)){openStake(vaultData.find(v=>!v.staked).id)}else{alert('All staked!')} });
-document.getElementById('viewPoolsBtn').addEventListener('click',openPools);
-document.getElementById('closePools').addEventListener('click',closePools);
-document.getElementById('cancelStake').addEventListener('click',closeStake);
-document.getElementById('poolsModal').addEventListener('click',(e)=>{if(e.target.id==='poolsModal')closePools()});
-document.getElementById('stakeModal').addEventListener('click',(e)=>{if(e.target.id==='stakeModal')closeStake()});
-
-document.querySelectorAll('.poolSelect').forEach(btn=>{
- btn.addEventListener('click',()=>{
-  currentPool=btn.dataset.pool;
-  currentPoolAPR=btn.parentElement.querySelector('p.text-xs').innerText.split('•')[0].trim();
-  document.querySelectorAll('.poolSelect').forEach(b=>{b.className='poolSelect bg-zinc-800 px-4 py-2 rounded-lg text-xs font-bold';b.innerText='SELECT'});
-  btn.className='poolSelect bg-white text-black px-4 py-2 rounded-lg text-xs font-bold';btn.innerText='ACTIVE ✓';
-  setTimeout(closePools,600);
- });
-});
-
-document.getElementById('confirmStake').addEventListener('click',()=>{
- const id=document.getElementById('stakeModal').dataset.id;
- const item=vaultData.find(v=>v.id===id);
- if(item){item.staked=true; stakedCount+=250; pending+=12.5;}
- document.getElementById('stakedBal').innerText=stakedCount;
- document.getElementById('pendingBal').innerText=pending.toFixed(2);
- document.getElementById('claimTxt').innerText=pending.toFixed(2);
- document.getElementById('stakeStatus').classList.remove('hidden');
- renderVault();
- setTimeout(closeStake,1200);
-});
-
-document.getElementById('claimBtn').addEventListener('click',()=>{
- if(!connected){connectWallet();return;}
- pending=0;
- document.getElementById('pendingBal').innerText='0.00';
- document.getElementById('claimTxt').innerText='0.00';
- alert('Claimed '+document.getElementById('claimTxt').innerText+' VOID to 0x8b7b...4e56 ✓ (demo)');
-});
-
-// Auto increment pending for feel
-setInterval(()=>{if(connected&&pending>0){pending+=0.01;document.getElementById('pendingBal').innerText=pending.toFixed(2);document.getElementById('claimTxt').innerText=pending.toFixed(2);}},2000);
-</script>
-</body>
-</html>
+<div class="absolute -inset-8 bg-purple-600/15 blur-[60px] rounded-full"></div>
+<div class="relative bg-black border border-zinc-800 rounded-[1.5rem] p-2">
+<img src="./void.png" class="w-full rounded-[1.2rem]">
+<div class="absolute inset-2 rounded-[1.2rem] bg-black/40 backdrop-blur-[2px] flex items-center justify-center"><div class="bg-black border border-zinc-700 px-4 py-2 rounded-full text-xs mono">🔒 FORGE LOCKED • MINT NOT LIVE</div></div>
+<div class="p-4 bg-[#0f0f0f] rounded-xl border border-zinc-800 mt-2">
+<p class="text-[10px] tracking-widest text-zinc
