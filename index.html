@@ -1,60 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voidforged</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voidforged - Robinhood Chain</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<style>
-body{font-family:'Space Grotesk',sans-serif;background:#080808}
-.mono{font-family:'JetBrains Mono',monospace}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>body{font-family:'Space Grotesk',sans-serif;background:#050508}.mono{font-family:'JetBrains Mono',monospace}.glow{box-shadow:0 0 30px rgba(139,92,246,0.5)}</style>
 </head>
-<body class="text-white min-h-screen">
-<!-- HEADER CLEAN -->
-<nav class="border-b border-zinc-800/60 bg-black/80 backdrop-blur sticky top-0 z-50">
-<div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-<div class="flex items-center gap-3">
-<div class="w-9 h-9 bg-white text-black rounded-lg flex items-center justify-center font-bold text-lg">V</div>
-<span class="font-bold tracking-[0.2em] text-sm">VOIDFORGED</span>
-</div>
-<button class="bg-white text-black px-5 py-2 rounded-full text-xs font-bold mono">CONNECT WALLET</button>
+<body class="text-white min-h-screen bg-gradient-to-b from-[#0a0a12] to-black">
+<nav class="border-b border-purple-900/20 bg-black/50 backdrop-blur sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-3"><img src="./void.png" class="w-9 h-9 rounded-lg"><span class="font-bold tracking-[0.2em]">VOIDFORGED</span><span class="text-[9px] bg-purple-600 px-2 py-1 rounded-full ml-2">ROBINHOOD CHAIN</span></div>
+<button id="connectTop" class="bg-white text-black px-5 py-2 rounded-full text-xs font-bold mono">CONNECT WALLET</button>
 </div>
 </nav>
 
-<div class="max-w-6xl mx-auto px-6 py-10 grid lg:grid-cols-3 gap-6">
-<!-- MAIN -->
-<div class="lg:col-span-2">
-<h1 class="text-5xl font-bold leading-none mb-3">Stake Your<br><span class="text-zinc-500">Void</span></h1>
-<p class="text-zinc-500 mb-10">Stake Voidforged NFTs to earn $VOID rewards.</p>
-
-<div class="grid grid-cols-3 gap-3 mb-8">
-<div class="bg-[#111] border border-zinc-800 rounded-2xl p-5"><p class="text-[10px] text-zinc-500 tracking-widest">TOTAL STAKED</p><p class="text-2xl font-bold mono mt-2">1,248</p></div>
-<div class="bg-[#111] border border-zinc-800 rounded-2xl p-5"><p class="text-[10px] text-zinc-500 tracking-widest">APR</p><p class="text-2xl font-bold mono mt-2 text-white">86%</p></div>
-<div class="bg-[#111] border border-zinc-800 rounded-2xl p-5"><p class="text-[10px] text-zinc-500 tracking-widest">REWARDS</p><p class="text-2xl font-bold mono mt-2">0</p></div>
+<div class="max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-12 items-center">
+<div>
+<h1 class="text-6xl md:text-7xl font-bold leading-[0.9]"><span class="text-[#c4b5fd]">VOID</span>FORGED</h1>
+<p class="text-xl md:text-2xl text-zinc-400 mt-4">Forged in the Void, Tempered by Chaos.</p>
+<p class="text-zinc-300 mt-6 italic border-l-2 border-purple-600 pl-4">The anvil cracks, the helmet fractures, but the forge never dies.</p>
+<p class="text-sm text-zinc-500 mt-6 max-w-lg">Voidforged is a collection of 5,555 helmets forged on Robinhood Chain (4663). Stake to earn $VOID. Each crack tells a story of battle in the void.</p>
+<div class="flex gap-3 mt-8">
+<button id="stakeNow" class="bg-[#8b5cf6] hover:bg-[#7c3aed] px-8 py-3 rounded-xl font-bold glow">STAKE NOW →</button>
+<button class="border border-zinc-700 px-8 py-3 rounded-xl">VIEW POOLS</button>
+</div>
+<div class="grid grid-cols-3 gap-4 mt-12">
+<div class="bg-black/50 border border-zinc-800 rounded-xl p-4"><p class="text-2xl font-bold">24,582</p><p class="text-xs text-zinc-500">STAKERS</p></div>
+<div class="bg-black/50 border border-zinc-800 rounded-xl p-4"><p class="text-2xl font-bold">12.4M</p><p class="text-xs text-zinc-500">VOID STAKED</p></div>
+<div class="bg-black/50 border border-zinc-800 rounded-xl p-4"><p class="text-2xl font-bold text-purple-400">120.5%</p><p class="text-xs text-zinc-500">APR</p></div>
+</div>
 </div>
 
-<div class="bg-[#111] border border-zinc-800 rounded-2xl p-5">
-<p class="text-xs tracking-widest text-zinc-500 mb-4">YOUR VAULT</p>
+<div class="relative">
+<div class="absolute -inset-10 bg-purple-600/20 blur-[80px] rounded-full"></div>
+<div class="relative bg-black border border-purple-900/50 rounded-[2rem] p-3">
+<img src="./void.png" class="w-full rounded-[1.5rem] bg-zinc-900">
+<div class="absolute top-6 right-6 bg-black/80 backdrop-blur px-3 py-1 rounded-full text-[10px] mono border border-zinc-700">NFT ID: #7783 • STATUS: ACTIVE</div>
+<div class="p-4 mt-2 bg-[#0f0f0f] rounded-xl border border-zinc-800">
+<p class="text-xs text-purple-400 tracking-widest">YOUR STAKE</p>
+<p class="mono text-sm mt-2">Staked Balance: 1,250 VOID</p>
+<p class="mono text-sm">Pending: 83.27 VOID</p>
+<button class="mt-3 bg-purple-600 px-4 py-2 rounded-lg text-xs font-bold">CLAIM 83.27 VOID</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="max-w-7xl mx-auto px-6 pb-12 grid lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-[#111] border border-zinc-800 rounded-2xl p-6">
+<p class="text-xs tracking-widest text-zinc-500 mb-4">YOUR VAULT • Robinhood Chain 4663</p>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-<div class="bg-black border border-zinc-800 rounded-xl overflow-hidden"><div class="aspect-square bg-gradient-to-b from-zinc-800 to-black"></div><div class="p-3 flex justify-between items-center"><span class="text-xs mono">#0421</span><span class="text-[10px] bg-white text-black px-2 py-1 rounded font-bold">STAKE</span></div></div>
-<div class="bg-black border border-zinc-800 rounded-xl overflow-hidden opacity-60"><div class="aspect-square bg-zinc-900"></div><div class="p-3"><span class="text-xs mono">#0893</span></div></div>
-<div class="bg-black border border-zinc-800 rounded-xl overflow-hidden opacity-60"><div class="aspect-square bg-zinc-900"></div><div class="p-3"><span class="text-xs mono">#1102</span></div></div>
-<div class="bg-black border border-zinc-800 rounded-xl overflow-hidden opacity-60"><div class="aspect-square bg-zinc-900"></div><div class="p-3"><span class="text-xs mono">#2048</span></div></div>
+<div class="bg-black border border-purple-900/30 rounded-xl overflow-hidden"><img src="./void.png" class="aspect-square object-cover"><div class="p-3 flex justify-between"><span class="text-xs mono">#0421</span><span class="text-[10px] bg-white text-black px-2 py-1 rounded font-bold">STAKE</span></div></div>
+<div class="bg-black border border-zinc-800 rounded-xl overflow-hidden opacity-60"><img src="./void.png" class="aspect-square object-cover"><div class="p-3"><span class="text-xs mono">#0893</span></div></div>
+<div class="bg-black border border-zinc-800 rounded-xl overflow-hidden opacity-60"><img src="./void.png" class="aspect-square object-cover"><div class="p-3"><span class="text-xs mono">#1102</span></div></div>
+<div class="bg-black border border-zinc-800 rounded-xl overflow-hidden opacity-60"><img src="./void.png" class="aspect-square object-cover"><div class="p-3"><span class="text-xs mono">#2048</span></div></div>
 </div>
+</div>
+<div class="bg-[#111] border border-zinc-800 rounded-2xl p-6 h-fit">
+<button id="connectSide" class="w-full bg-white text-black py-3.5 rounded-xl font-bold text-sm">Connect Wallet to Stake</button>
+<div id="walletInfo" class="hidden mt-4 p-3 bg-black border border-zinc-800 rounded-xl"><p class="text-[10px] text-zinc-500">CONNECTED</p><p id="walletAddr" class="mono text-xs mt-1 text-green-400 break-all"></p></div>
+<div class="mt-6 space-y-2 text-xs mono"><div class="flex justify-between"><span class="text-zinc-500">Network</span><span>Robinhood Chain</span></div><div class="flex justify-between"><span class="text-zinc-500">Chain ID</span><span>4663</span></div><div class="flex justify-between"><span class="text-zinc-500">Status</span><span id="netStatus" class="text-green-400">Live</span></div></div>
 </div>
 </div>
 
-<!-- SIDE -->
-<div class="bg-[#111] border border-zinc-800 rounded-2xl p-6 h-fit">
-<p class="text-xs tracking-widest text-zinc-500 mb-6">STAKING STATS</p>
-<button class="w-full bg-white text-black py-3.5 rounded-xl font-bold text-sm mb-6">Connect Wallet to Stake</button>
-<div class="space-y-3 text-xs mono">
-<div class="flex justify-between text-zinc-500"><span>Network</span><span class="text-white">Base</span></div>
-<div class="flex justify-between text-zinc-500"><span>Status</span><span class="text-green-400">Live</span></div>
-</div>
-</div>
-</div>
+<script>
+const ROBINHOOD={chainId:'0x1237',chainName:'Robinhood Chain',nativeCurrency:{name:'ETH',symbol:'ETH',decimals:18},rpcUrls:['https://rpc.mainnet.chain.robinhood.com'],blockExplorerUrls:['https://robinhoodchain.blockscout.com']};
+async function connectWallet(){
+ if(!window.ethereum){alert('Install MetaMask/Robinhood Wallet');return;}
+ try{
+  const acc=await window.ethereum.request({method:'eth_requestAccounts'});
+  try{await window.ethereum.request({method:'wallet_switchEthereumChain',params:[{chainId:ROBINHOOD.chainId}]})}catch(e){if(e.code===4902){await window.ethereum.request({method:'wallet_addEthereumChain',params:[ROBINHOOD]})}}
+  const short=acc[0].slice(0,6)+'...'+acc[0].slice(-4);
+  document.getElementById('connectTop').innerText=short;
+  document.getElementById('connectSide').innerText='Connected: '+short;
+  document.getElementById('walletAddr').innerText=acc[0];
+  document.getElementById('walletInfo').classList.remove('hidden');
+  document.getElementById('netStatus').innerText='Connected ✓';
+ }catch(e){alert(e.message)}
+}
+document.getElementById('connectTop').addEventListener('click',connectWallet);
+document.getElementById('connectSide').addEventListener('click',connectWallet);
+document.getElementById('stakeNow').addEventListener('click',connectWallet);
+</script>
 </body>
 </html>
